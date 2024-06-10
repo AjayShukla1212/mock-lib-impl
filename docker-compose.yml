@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  agent:
+    build:
+      context: .
+      dockerfile: agent/Dockerfile
+    volumes:
+      - agent-volume:/opt/agent
+
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_DB: mocking_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345678
+    ports:
+      - "5432:5432"
+
+  app:
+    build:
+      context: .
+      dockerfile: app/Dockerfile
+    volumes:
+      - agent-volume:/opt/agent
+    ports:
+      - "8080:8080"
+    depends_on:
+      - agent
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=password
+      - HT_MODE=REPLAY
+      - JAVA_OPTS=-javaagent:/opt/agent/mock-lib-impl-agent.jar
+
+volumes:
+  agent-volume:
