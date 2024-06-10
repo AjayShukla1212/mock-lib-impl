@@ -1,7 +1,9 @@
-package com.ajay.dao;
+package com.ajay.hypertest.dao;
 
 
-import jakarta.persistence.*;
+import javax.persistence.*;
+
+import javax.persistence.GenerationType;
 
 @Entity
 @Table(name = "posts")

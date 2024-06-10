@@ -1,21 +1,17 @@
-package com.ajay.controller;
+package com.ajay.hypertest.controller;
 
 
-import com.ajay.dao.Post;
-import com.ajay.dto.RequestDTO;
-import com.ajay.dto.ResponseDTO;
-import com.ajay.repo.PostRepo;
-import com.ajay.service.PostService;
+import com.ajay.hypertest.dto.RequestDTO;
+import com.ajay.hypertest.dto.ResponseDTO;
+import com.ajay.hypertest.service.PostService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Map;
-
-@org.springframework.web.bind.annotation.RestController
+@RestController
 @RequestMapping("/api")
 public class PostController {
 
@@ -27,12 +23,10 @@ public class PostController {
 
     @PostMapping("/createNewPost")
     public ResponseEntity<?> createNewPost(@RequestBody RequestDTO request) {
-        Object responseDTO = postService.createPost(request);
-        if (responseDTO instanceof Map<?, ?>) {
-            Map<?, ?> responseMap = (Map<?, ?>) responseDTO;
-            if (responseMap.containsKey("error")) {
-                return new ResponseEntity<>(responseDTO, HttpStatus.BAD_REQUEST);
-            }
+        ResponseDTO responseDTO = postService.createPost(request);
+        if (responseDTO.getError()!=null) {
+            return new ResponseEntity<>(responseDTO, HttpStatus.BAD_REQUEST);
+
         }
         return new ResponseEntity<>(responseDTO, HttpStatus.OK);
     }

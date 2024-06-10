@@ -1,4 +1,4 @@
-package com.ajay.dto;
+package com.ajay.hypertest.dto;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;

@@ -1,4 +1,4 @@
-package com.ajay.agent;
+package com.ajay.hypertest.agent;
 
 import net.bytebuddy.agent.builder.AgentBuilder;
 import net.bytebuddy.asm.Advice;

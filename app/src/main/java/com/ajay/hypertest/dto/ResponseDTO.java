@@ -1,6 +1,6 @@
-package com.ajay.dto;
+package com.ajay.hypertest.dto;
 
-import com.ajay.dao.Post;
+import com.ajay.hypertest.dao.Post;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ResponseDTO {
@@ -8,13 +8,16 @@ public class ResponseDTO {
     private Post dbPost;
     @JsonProperty(value = "http_outbound")
     private String httpOutbound;
+    @JsonProperty(value = "error")
+    private String error;
 
     public ResponseDTO() {
     }
 
-    public ResponseDTO(Post dbPost, String httpOutbound) {
+    public ResponseDTO(Post dbPost, String httpOutbound, String error) {
         this.dbPost = dbPost;
         this.httpOutbound = httpOutbound;
+        this.error = error;
     }
 
     public Post getDbPost() {
@@ -32,4 +35,13 @@ public class ResponseDTO {
     public void setHttpOutbound(String httpOutbound) {
         this.httpOutbound = httpOutbound;
     }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
+
 }

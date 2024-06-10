@@ -1,17 +1,15 @@
-package com.ajay.service.impl;
+package com.ajay.hypertest.service.impl;
 
-import com.ajay.constants.Constants;
-import com.ajay.dao.Post;
-import com.ajay.dto.RequestDTO;
-import com.ajay.dto.ResponseDTO;
-import com.ajay.repo.PostRepo;
-import com.ajay.service.PostService;
-import netscape.javascript.JSObject;
+import com.ajay.hypertest.constants.Constants;
+import com.ajay.hypertest.dao.Post;
+import com.ajay.hypertest.dto.RequestDTO;
+import com.ajay.hypertest.dto.ResponseDTO;
+import com.ajay.hypertest.service.PostService;
+import com.ajay.hypertest.repo.PostRepo;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.HashMap;
-import java.util.Map;
-
+@Service
 public class PostServiceImpl implements PostService {
 
     private final PostRepo postRepo;
@@ -21,7 +19,7 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public Object createPost(RequestDTO request) {
+    public ResponseDTO createPost(RequestDTO request) {
         ResponseDTO responseDTO = new ResponseDTO();
         try {
             Post post = new Post();
@@ -35,11 +33,10 @@ public class PostServiceImpl implements PostService {
             String apiResponse = restTemplate.getForObject(Constants.WORLD_TIME_URL, String.class);
             responseDTO.setHttpOutbound(apiResponse);
             return responseDTO;
+
         } catch (Exception e) {
-           // response.put("error", e.getMessage());
-            Map<String, String> errorObject = new HashMap<>();
-            errorObject.put("error", e.getMessage());
-            return errorObject;
+            responseDTO.setError(e.getMessage());
+            return responseDTO;
         }
     }
 }

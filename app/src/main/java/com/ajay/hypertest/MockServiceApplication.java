@@ -1,4 +1,4 @@
-package com.ajay;
+package com.ajay.hypertest;
 
 
 import org.springframework.boot.SpringApplication;
