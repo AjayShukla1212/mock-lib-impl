@@ -18,10 +18,15 @@ Here's a quick rundown of the project structure:
 
 Follow these steps to get the project up and running:
 
-1. Build the Docker images:
+1. Build the Docker image for Agent:
 
     ```bash
-    docker-compose build
+    docker-compose build agent
+    ```
+2. Build the Docker image for App:
+   
+    ```bash
+    docker-compose build app
     ```
 
 2. Start the containers:

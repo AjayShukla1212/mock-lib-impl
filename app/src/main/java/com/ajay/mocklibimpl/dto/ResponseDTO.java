@@ -1,6 +1,6 @@
-package com.ajay.hypertest.dto;
+package com.ajay.mocklibimpl.dto;
 
-import com.ajay.hypertest.dao.Post;
+import com.ajay.mocklibimpl.dao.Post;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ResponseDTO {

@@ -1,11 +1,11 @@
-package com.ajay.hypertest.service.impl;
+package com.ajay.mocklibimpl.service.impl;
 
-import com.ajay.hypertest.constants.Constants;
-import com.ajay.hypertest.dao.Post;
-import com.ajay.hypertest.dto.RequestDTO;
-import com.ajay.hypertest.dto.ResponseDTO;
-import com.ajay.hypertest.service.PostService;
-import com.ajay.hypertest.repo.PostRepo;
+import com.ajay.mocklibimpl.constants.Constants;
+import com.ajay.mocklibimpl.dao.Post;
+import com.ajay.mocklibimpl.dto.RequestDTO;
+import com.ajay.mocklibimpl.dto.ResponseDTO;
+import com.ajay.mocklibimpl.service.PostService;
+import com.ajay.mocklibimpl.repo.PostRepo;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 

@@ -1,4 +1,4 @@
-package com.ajay.hypertest;
+package com.ajay.mocklibimpl;
 
 
 import org.springframework.boot.SpringApplication;

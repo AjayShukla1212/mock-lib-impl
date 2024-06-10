@@ -1,4 +1,4 @@
-package com.ajay.hypertest.dto;
+package com.ajay.mocklibimpl.dto;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -6,6 +6,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class RequestDTO {
     @JsonProperty(value = "post_name")
     private String postName;
+
+    @JsonProperty(value = "post_contents")
+    private String postContent;
 
     public RequestDTO() {
     }
@@ -30,7 +33,4 @@ public class RequestDTO {
     public void setPostContent(String postContent) {
         this.postContent = postContent;
     }
-
-    @JsonProperty(value = "post_content")
-    private String postContent;
 }

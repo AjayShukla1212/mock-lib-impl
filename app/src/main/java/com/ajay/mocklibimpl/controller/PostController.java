@@ -1,9 +1,10 @@
-package com.ajay.hypertest.controller;
+package com.ajay.mocklibimpl.controller;
 
 
-import com.ajay.hypertest.dto.RequestDTO;
-import com.ajay.hypertest.dto.ResponseDTO;
-import com.ajay.hypertest.service.PostService;
+import com.ajay.mocklibimpl.dto.RequestDTO;
+import com.ajay.mocklibimpl.dto.ResponseDTO;
+import com.ajay.mocklibimpl.service.PostService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ public class PostController {
 
     private final PostService postService;
 
+    @Autowired
     public PostController(PostService postService) {
         this.postService = postService;
     }

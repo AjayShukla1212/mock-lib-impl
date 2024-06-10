@@ -1,4 +1,4 @@
-package com.ajay.hypertest.dao;
+package com.ajay.mocklibimpl.dao;
 
 
 import javax.persistence.*;
