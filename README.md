@@ -18,15 +18,10 @@ Here's a quick rundown of the project structure:
 
 Follow these steps to get the project up and running:
 
-1. Build the Docker image for Agent:
+1. Build the Docker image
 
     ```bash
-    docker-compose build agent
-    ```
-2. Build the Docker image for App:
-   
-    ```bash
-    docker-compose build app
+    docker-compose build 
     ```
 
 2. Start the containers:
@@ -44,9 +39,4 @@ Follow these steps to get the project up and running:
 ## Environment Variables
 
 To configure the application, you'll need to set the following environment variables:
-
-- `DB_HOST`: The host address of your database.
-- `DB_PORT`: The port number your database is listening on.
-- `DB_USERNAME`: The username for your database.
-- `DB_PASSWORD`: The password for your database.
 - `HT_MODE`: The mode for the Java agent. It can be set to either `RECORD` or `REPLAY`.

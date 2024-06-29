@@ -16,7 +16,6 @@ public class MockAgent {
 
         // Mocking Save Method of JDBC
         interceptMethod(MockConstants.POST_REPO, MockConstants.SAVE, mode, new PostMock(), ins);
-
     }
 
     private static void interceptMethod(String type, String method, String mode, Object returnValue, Instrumentation inst) {
