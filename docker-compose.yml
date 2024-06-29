@@ -15,5 +15,5 @@ services:
     depends_on:
       - db
     environment:
-      - HT_MODE=RECORD
+      - HT_MODE=REPLAY
 
