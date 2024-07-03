@@ -2,12 +2,15 @@ package com.ajay.mocklibimpl.service.impl;
 
 import com.ajay.mocklibimpl.constants.Constants;
 import com.ajay.mocklibimpl.dao.Post;
+import com.ajay.mocklibimpl.dto.GetPostDetails;
 import com.ajay.mocklibimpl.dto.RequestDTO;
 import com.ajay.mocklibimpl.dto.ResponseDTO;
 import com.ajay.mocklibimpl.service.PostService;
 import com.ajay.mocklibimpl.repo.PostRepo;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
 
 @Service
 public class PostServiceImpl implements PostService {
@@ -38,5 +41,20 @@ public class PostServiceImpl implements PostService {
             responseDTO.setError(e.getMessage());
             return responseDTO;
         }
+    }
+
+    @Override
+    public GetPostDetails getAllPosts() {
+        GetPostDetails postDetails = new GetPostDetails();
+        System.out.println("Before Repo");
+        List<Post> posts = postRepo.findAll();
+        System.out.println("Posts: " + posts);
+        postDetails.setPostList(posts);
+
+        RestTemplate restTemplate = new RestTemplate();
+        String apiResponse = restTemplate.getForObject(Constants.WORLD_TIME_URL, String.class);
+
+        postDetails.setHttpOutbound(apiResponse);
+        return postDetails;
     }
 }
