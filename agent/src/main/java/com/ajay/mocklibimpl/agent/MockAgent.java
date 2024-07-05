@@ -18,7 +18,7 @@ public class MockAgent {
         // interceptMethod(MockConstants.POST_REPO, MockConstants.SAVE, mode, new PostMock(), ins);
 
         //Mocking JDBC
-        interceptMethod("org.springframework.jdbc.core.JdbcTemplate", MockConstants.SAVE, mode, new PostMock(), ins);
+        interceptMethod("org.springframework.jdbc.core.JdbcTemplate", "queryForObject", mode, new PostMock(), ins);
     }
 
     private static void interceptMethod(String type, String method, String mode, Object returnValue, Instrumentation inst) {
