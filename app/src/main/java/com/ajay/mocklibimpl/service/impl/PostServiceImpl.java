@@ -7,9 +7,12 @@ import com.ajay.mocklibimpl.dto.RequestDTO;
 import com.ajay.mocklibimpl.dto.ResponseDTO;
 import com.ajay.mocklibimpl.service.PostService;
 import com.ajay.mocklibimpl.repo.PostRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,6 +24,14 @@ public class PostServiceImpl implements PostService {
         this.postRepo = postRepo;
     }
 
+    @Autowired
+    private PostRepo postRepository;
+
+    @Transactional
+    public void savePost(Post post) {
+        postRepository.save(post);
+    }
+
     @Override
     public ResponseDTO createPost(RequestDTO request) {
         ResponseDTO responseDTO = new ResponseDTO();
@@ -28,7 +39,7 @@ public class PostServiceImpl implements PostService {
             Post post = new Post();
             post.setName(request.getPostName());
             post.setContents(request.getPostContent());
-            post = postRepo.save(post);
+            postRepo.save(post);
 
            responseDTO.setDbPost(post);
 
@@ -47,7 +58,8 @@ public class PostServiceImpl implements PostService {
     public GetPostDetails getAllPosts() {
         GetPostDetails postDetails = new GetPostDetails();
         System.out.println("Before Repo");
-        List<Post> posts = postRepo.findAll();
+//        postRepo.findAll();
+        List<Post> posts = new ArrayList<>();
         System.out.println("Posts: " + posts);
         postDetails.setPostList(posts);
 

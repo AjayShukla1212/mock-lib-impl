@@ -12,7 +12,7 @@ public class MockAgent {
         String mode = System.getenv(MockConstants.HT_MODE);
 
         // Mocking Rest Template
-        interceptMethod(MockConstants.REST_TEMPLATE, MockConstants.GET_OBJECT, mode, MockConstants.MOCK_DATA , ins);
+        interceptMethod("org.springframework.web.client.RestTemplate", MockConstants.GET_OBJECT, mode, MockConstants.MOCK_DATA , ins);
 
         // Mocking Save Method of JDBC
         // interceptMethod(MockConstants.POST_REPO, MockConstants.SAVE, mode, new PostMock(), ins);
