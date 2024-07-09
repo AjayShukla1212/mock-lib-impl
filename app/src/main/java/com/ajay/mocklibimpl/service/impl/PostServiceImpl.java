@@ -28,8 +28,8 @@ public class PostServiceImpl implements PostService {
     private PostRepo postRepository;
 
     @Transactional
-    public void savePost(Post post) {
-        postRepository.save(post);
+    public Post savePost(Post post) {
+        return postRepository.save(post);
     }
 
     @Override
@@ -39,9 +39,9 @@ public class PostServiceImpl implements PostService {
             Post post = new Post();
             post.setName(request.getPostName());
             post.setContents(request.getPostContent());
-            postRepo.save(post);
+            Post postResponse = postRepo.save(post);
 
-           responseDTO.setDbPost(post);
+           responseDTO.setDbPost(postResponse);
 
             RestTemplate restTemplate = new RestTemplate();
             String apiResponse = restTemplate.getForObject(Constants.WORLD_TIME_URL, String.class);
